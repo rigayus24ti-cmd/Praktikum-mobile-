@@ -4,15 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gayus_3tic.databinding.ActivityLoginBinding
 import com.example.gayus_3tic.databinding.ActivityMainBinding
+import com.example.gayus_3tic.pertemuan6.EnamActivity
 import com.example.gayus_3tic.pertemuan_5.LimaActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -35,16 +34,30 @@ class MainActivity : AppCompatActivity() {
         val nama = intent.getStringExtra("nama")
         val umur = intent.getIntExtra("umur", 0)
 
-// Menampilkan ke TextView
-        Log.w("hasil","Nama: $nama umur: $umur ")
+        // Menampilkan ke TextView
+        Log.w("hasil", "Nama: $nama umur: $umur ")
 
         binding.tvHasil.text = "Nama: $nama\nUmur: $umur"
 
-
         binding.btnKembali.setOnClickListener {
-//            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-//            startActivity(intent)
             finish()
+        }
+
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        binding.btnLogout.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    dialog.dismiss()
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
+                .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
+                .show()
         }
 
         binding.btntoLima.setOnClickListener {
@@ -52,30 +65,34 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btntoEnam.setOnClickListener {
+            val intent = Intent(this@MainActivity, EnamActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnSnackBar.setOnClickListener {
             Snackbar.make(binding.root, "Ini adalah Snackbar", Snackbar.LENGTH_SHORT)
-                .setAction("Tutup"){
+                .setAction("Tutup") {
                     val intent = Intent(this@MainActivity, LoginActivity::class.java)
                     startActivity(intent)
-                    Log.e("Info Snackbar","Snackbar ditutup")
+                    Log.e("Info Snackbar", "Snackbar ditutup")
                 }
                 .show()
         }
 
-        binding.btnDialog.setOnClickListener{
+        binding.btnDialog.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi")
                 .setMessage("Apakah Anda yakin ingin melanjutkan?")
                 .setPositiveButton("Ya") { dialog, _ ->
                     dialog.dismiss()
-                    Log.e("Info Dialog","Anda memilih Ya!")
+                    Log.e("Info Dialog", "Anda memilih Ya!")
                 }
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()
-                    Log.e("Info Dialog","Anda memilih Tidak!")
+                    Log.e("Info Dialog", "Anda memilih Tidak!")
                 }
                 .show()
         }
-
     }
 }
