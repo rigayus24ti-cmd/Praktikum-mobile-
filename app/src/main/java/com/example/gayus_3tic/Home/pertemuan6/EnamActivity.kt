@@ -1,4 +1,4 @@
-package com.example.gayus_3tic.pertemuan6
+package com.example.gayus_3tic.Home.pertemuan6
 
 import android.os.Bundle
 import android.view.MenuItem
