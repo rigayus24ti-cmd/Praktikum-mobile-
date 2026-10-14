@@ -3,8 +3,6 @@ package com.example.gayus_3tic
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -28,30 +26,20 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-// Kode ini harus selalu dipanggil saat butuh akses "user_pref"
+
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-// Kondisi jika isLogin bernilai true
-//        val isLogin = sharedPref.getBoolean("isLogin", false)
-//        if (isLogin) {
-//            startActivity(Intent(this, MainActivity::class.java))
-//            finish()
-//            return
-//        }
 
         binding.btnLogin.setOnClickListener {
             val user = binding.edtUsername.text.toString()
             val pass = binding.edtPassword.text.toString()
 
-
             if (user.isNotEmpty() && user == pass) {
-
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
                 editor.putString("user", user)
                 editor.apply()
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
-
             } else {
                 AlertDialog.Builder(this)
                     .setTitle("Login Gagal")
@@ -62,4 +50,3 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
-
