@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="abu_gelap">#808080</color>
+    <color name="dot_selected">#2196F3</color>
 </resources>
