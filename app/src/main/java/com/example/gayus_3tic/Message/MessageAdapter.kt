@@ -34,6 +34,8 @@ class MessageAdapter(
 
         Glide.with(context)
             .load(item.avatarUrl)
+            .placeholder(R.drawable.user)
+            .error(R.drawable.user)
             .circleCrop()
             .into(avatarImg)
 

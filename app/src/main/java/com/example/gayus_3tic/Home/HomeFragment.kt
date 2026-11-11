@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.gayus_3tic.Home.pertemuan11.TenthActivity
 import com.example.gayus_3tic.Home.pertemuan6.EnamActivity
 import com.example.gayus_3tic.Home.pertemuan9.NinthActivity
 import com.example.gayus_3tic.Home.pertemuan_5.LimaActivity
@@ -71,6 +72,10 @@ class HomeFragment : Fragment() {
 
         binding.btntoNinth.setOnClickListener {
             val intent = Intent(requireContext(), NinthActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnTenth.setOnClickListener {
+            val intent = Intent(requireContext(), TenthActivity::class.java)
             startActivity(intent)
         }
 
