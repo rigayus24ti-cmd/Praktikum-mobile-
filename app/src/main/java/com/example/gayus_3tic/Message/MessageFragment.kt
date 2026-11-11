@@ -22,16 +22,16 @@ class MessageFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val messageList = listOf(
-        MessageModel("Alya", "Halo! Apa kabar?", "https://i.pravatar.cc/150?img=1"),
-        MessageModel("Budi", "Sudah makan?", "https://i.pravatar.cc/150?img=2"),
-        MessageModel("Citra", "Jangan lupa tugasnya ya!", "https://i.pravatar.cc/150?img=3"),
-        MessageModel("Dika", "Besok kita rapat jam 9", "https://i.pravatar.cc/150?img=4"),
-        MessageModel("Eka", "Nice job kemarin!", "https://i.pravatar.cc/150?img=5"),
-        MessageModel("Fajar", "Lagi ngapain?", "https://i.pravatar.cc/150?img=6"),
-        MessageModel("Gita", "Boleh minta tolong?", "https://i.pravatar.cc/150?img=7"),
-        MessageModel("Hana", "Lihat email ya", "https://i.pravatar.cc/150?img=8"),
-        MessageModel("Irfan", "Oke noted", "https://i.pravatar.cc/150?img=9"),
-        MessageModel("Joko", "Sampai jumpa besok", "https://i.pravatar.cc/150?img=10")
+        MessageModel("Alya", "Halo! Apa kabar?", "https://reqres.in/img/faces/1-image.jpg"),
+        MessageModel("Budi", "Sudah makan?", "https://reqres.in/img/faces/2-image.jpg"),
+        MessageModel("Citra", "Jangan lupa tugasnya ya!", "https://reqres.in/img/faces/3-image.jpg"),
+        MessageModel("Dika", "Besok kita rapat jam 9", "https://reqres.in/img/faces/4-image.jpg"),
+        MessageModel("Eka", "Nice job kemarin!", "https://reqres.in/img/faces/5-image.jpg"),
+        MessageModel("Fajar", "Lagi ngapain?", "https://reqres.in/img/faces/6-image.jpg"),
+        MessageModel("Gita", "Boleh minta tolong?", "https://reqres.in/img/faces/7-image.jpg"),
+        MessageModel("Hana", "Lihat email ya", "https://reqres.in/img/faces/8-image.jpg"),
+        MessageModel("Irfan", "Oke noted", "https://reqres.in/img/faces/9-image.jpg"),
+        MessageModel("Joko", "Sampai jumpa besok", "https://reqres.in/img/faces/10-image.jpg")
     )
 
     override fun onCreateView(
